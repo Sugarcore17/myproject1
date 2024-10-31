@@ -1,0 +1,68 @@
+@startuml
+class demo2.ContactDAOImpl {
+- List<Contact> contacts
+- int nextId
++ void addContact(Contact)
++ boolean deleteContact(int)
++ boolean updateContact(Contact)
++ List<Contact> getAllContacts()
+}
+
+
+interface demo2.ContactService {
+~ void addContact(Contact)
+~ boolean deleteContact(int)
+~ boolean updateContact(Contact)
+~ List<Contact> getAllContacts()
+}
+
+interface demo2.ContactDAO {
+~ void addContact(Contact)
+~ boolean deleteContact(int)
+~ boolean updateContact(Contact)
+~ List<Contact> getAllContacts()
+}
+
+class demo2.ContactServiceImpl {
+- ContactDAO contactDAO
++ void addContact(Contact)
++ boolean deleteContact(int)
++ boolean updateContact(Contact)
++ List<Contact> getAllContacts()
+}
+
+
+class demo2.Contact {
+- int id
+- String name
+- String address
+- String phone
++ int getId()
++ void setId(int)
++ String getName()
++ void setName(String)
++ String getAddress()
++ void setAddress(String)
++ String getPhone()
++ void setPhone(String)
++ String toString()
+}
+
+
+class demo2.AddressBookUI {
+- Scanner scanner
+- ContactService contactService
++ void run()
+- void addContact()
+- void deleteContact()
+- void updateContact()
+- void viewContacts()
++ {static} void main(String[])
+}
+
+
+
+
+demo2.ContactDAO <|.. demo2.ContactDAOImpl
+demo2.ContactService <|.. demo2.ContactServiceImpl
+@enduml
